@@ -117,8 +117,17 @@ std::vector<double> cuda_ik_solver::solveIKCUDA(const geometry_msgs::msg::Pose& 
         {-2.8973f, 2.8973f}, {-3.0718f, -0.0698f},
         {-2.8973f, 2.8973f}, {-0.0175f, 3.7525f}
     };
-    cudaMemcpyToSymbol(d_joint_lower, &joint_limits[0][0], sizeof(float) * DOF);
-    cudaMemcpyToSymbol(d_joint_upper, &joint_limits[0][1], sizeof(float) * DOF);
+        
+    float lower[DOF], upper[DOF];
+    for (int i = 0; i < DOF; ++i) {
+        lower[i] = joint_limits[i][0];
+        upper[i] = joint_limits[i][1];
+    }
+    cudaMemcpyToSymbol(d_joint_lower, lower, sizeof(float) * DOF);
+    cudaMemcpyToSymbol(d_joint_upper, upper, sizeof(float) * DOF);
+
+    // cudaMemcpyToSymbol(d_joint_lower, &joint_limits[0][0], sizeof(float) * DOF);
+    // cudaMemcpyToSymbol(d_joint_upper, &joint_limits[0][1], sizeof(float) * DOF);
     
     float current_angles_float[DOF];
     for (int i = 0; i < DOF; ++i) {
