@@ -2,7 +2,7 @@
 
 This package implements an efficient GPU-based Inverse Kinematics (IK) solver using CUDA to compute joint angles for a 6-DOF robotic arm in ROS 2. It supports both position and orientation targets and publishes optimal trajectories to a controller.
 
-### Package Structure
+<!-- ### Package Structure
 cuda_ik_solver/
     include/
         ik_solver.hpp
@@ -11,7 +11,7 @@ cuda_ik_solver/
         ik_solver.cu    # CUDA IK Solver
     CMakeLists.txt
     package.xml
-    README.md
+    README.md -->
 
 ## 🔧 Dependencies
 
