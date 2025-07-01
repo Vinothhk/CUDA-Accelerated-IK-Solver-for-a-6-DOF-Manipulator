@@ -56,6 +56,7 @@ target_link_libraries(ik_node
 ament_target_dependencies(ik_node
     rclcpp
     geometry_msgs
+    sensor_msgs
     trajectory_msgs
 )
 
