@@ -17,6 +17,12 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+
+find_package(tf2_sensor_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_eigen REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 find_package(trajectory_msgs REQUIRED)
 find_package(CUDA REQUIRED)
 
@@ -44,6 +50,11 @@ cuda_add_library(ik_cuda SHARED
 )
 ament_target_dependencies(ik_cuda
     geometry_msgs
+    tf2_geometry_msgs
+    tf2_sensor_msgs 
+    tf2_ros 
+    tf2 
+    tf2_eigen
 )
 # Build ROS 2 node
 add_executable(ik_node src/ik_node.cpp)
@@ -56,6 +67,11 @@ target_link_libraries(ik_node
 ament_target_dependencies(ik_node
     rclcpp
     geometry_msgs
+    tf2_geometry_msgs
+    tf2_sensor_msgs 
+    tf2_ros 
+    tf2 
+    tf2_eigen
     sensor_msgs
     trajectory_msgs
 )
