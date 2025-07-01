@@ -18,8 +18,7 @@ cuda_ik_solver/
 - ROS 2 Humble or newer
 - CUDA Toolkit ≥ 11.0
 - CMake ≥ 3.10
-- Compatible robot (e.g., UR5, UR10)
-- Robot simulation (e.g., Gazebo or RViz)
+- Gazebo Ignition
 
 ---
 
