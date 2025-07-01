@@ -19,7 +19,6 @@ __device__ float bounded_noise(float range) {
 }
 
 __device__ void forward_kinematics(const float* joint_angles, float* ee_pose, float* ee_quat) {
-    // Your existing FK implementation
     float a[DOF] = {0.0f, -0.425f, -0.3922f, 0.0f, 0.0f, 0.0f};
     float d[DOF] = {0.1625f, 0.0f, 0.0f, 0.1333f, 0.0997f, 0.0996f};
     float alpha[DOF] = {-M_PI_2, M_PI_2, M_PI_2, -M_PI_2, -M_PI_2, 0.0f};
@@ -75,7 +74,7 @@ __device__ float quaternion_distance(const float* q1, const float* q2) {
 __device__ float compute_cost(const float* joint_angles, const float* target_pose) {
     float ee_pose[3];
     float ee_quat[4];
-    forward_kinematics(joint_angles, ee_pose, ee_quat);  // update FK to compute quat too
+    forward_kinematics(joint_angles, ee_pose, ee_quat);
 
     // Position error
     float dx = target_pose[0] - ee_pose[0];
